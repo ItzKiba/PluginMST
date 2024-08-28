@@ -1,0 +1,33 @@
+name: PluginMST
+version: '1.0'
+main: me.itzkiba.pluginMST.PluginMST
+api-version: '1.21'
+authors: [ ItzKiba ]
+commands:
+  setitemstat:
+    description: Sets the stats for your currently held item.
+    usage: /setitemstat [stat] [value]
+  stats:
+    description: View your stats.
+    usage: /stats
+  renameitem:
+    description: Renames your item.
+    usage: /rename [name]
+  setlevel:
+    description: Sets your level.
+    usage: /setlevel [level]
+  createcustomitem:
+    description: Creates a random custom item.
+    usage: /createcustomitem [weaponType] [rarity] [level]
+  setmana:
+    description: Sets your mana.
+    usage: /setmana [value]
+  addability:
+    description: Add an ability to an item.
+    usage: /addability [abilityname]
+  class:
+    description: Select your class.
+    usage: /class
+  showitem:
+    description: Show the item you're currently holding in chat.
+    usage: /showitem
