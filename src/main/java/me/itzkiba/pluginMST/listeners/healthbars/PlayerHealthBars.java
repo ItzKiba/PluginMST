@@ -46,8 +46,8 @@ public class PlayerHealthBars implements Listener
 
                         if (maxMana > 0) {
                             text = Component.text(
-                                    color + "\u2764 " + currentHP + " / " + maxHP + "            " + ChatColor.WHITE + "\u26E8 " + currentDefense
-                                            + "            " + ChatColor.AQUA + "\u2735 " + currentMana + " / " + maxMana + "      "
+                                    color + "\u2764 " + currentHP + " | " + maxHP + "            " + ChatColor.WHITE + "\u26E8 " + currentDefense
+                                            + "            " + ChatColor.AQUA + "\u2735 " + currentMana + " | " + maxMana + "      "
                             );
                         }
                         else

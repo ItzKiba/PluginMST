@@ -4,6 +4,7 @@ import me.itzkiba.pluginMST.PluginMST;
 import me.itzkiba.pluginMST.helperfunctions.RandomNumber;
 import me.itzkiba.pluginMST.listeners.itemconverts.ConvertDefaultItems;
 import me.itzkiba.pluginMST.listeners.persistentdatakeys.Stats;
+import me.itzkiba.pluginMST.listeners.playerfunctions.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
@@ -71,6 +72,7 @@ public class SetEntityLevel implements Listener {
                         Bukkit.getScheduler().scheduleSyncDelayedTask(PluginMST.getPlugin(), ()-> {
                             ShowEntityHealthBar.spawnEvent(entity);
                             ConvertDefaultItems.spawnEvent(entity);
+                            PlayerStats.setStats(entity);
                         }, 2);
 
                     }
@@ -157,7 +159,7 @@ public class SetEntityLevel implements Listener {
                     distance -= distanceDivisor;
                 }
 
-                moblevel = RandomNumber.generateInt(71 + levelBonus, 80 + levelBonus);
+                moblevel = RandomNumber.generateInt(61 + levelBonus, 70 + levelBonus);
             }
         }
 
@@ -195,14 +197,21 @@ public class SetEntityLevel implements Listener {
         }
 
         double healthMultiplier = multiplier;
-        double hpMultValue = (moblevel / 20.0) + 1;
+        double hpMultValue = (moblevel / 4.0) + 1;
 
         healthMultiplier *= hpMultValue;
 
+        double endMultiplier = 1;
+        if (dimension == World.Environment.THE_END) {
+            endMultiplier = 0.8;
+        }
+
         Stats.setEntityLevel(entity, moblevel);
         Stats.setEntityHealthStat(entity, (int)(entity.getMaxHealth() * healthMultiplier * 5));
-        Stats.setEntityRangedDamageStat(entity, (int) (Stats.getEntityRangedDamageStat(entity) * multiplier * 5));
-
+        Stats.setEntityRangedDamageStat(entity, (int) (Stats.getEntityRangedDamageStat(entity) * multiplier * 5 * endMultiplier));
+        if (!(entity instanceof Player) && !(entity instanceof Projectile) && entity.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE) != null) {
+            entity.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).setBaseValue((int)(entity.getAttribute(Attribute.GENERIC_ATTACK_DAMAGE).getValue() * multiplier * endMultiplier));
+        }
         double finalHealthMultiplier = healthMultiplier;
         Bukkit.getScheduler().runTaskLaterAsynchronously(PluginMST.getPlugin(), () -> {
             entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue((int)(entity.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * finalHealthMultiplier));

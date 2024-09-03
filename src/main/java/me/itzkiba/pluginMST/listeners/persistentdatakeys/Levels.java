@@ -70,6 +70,10 @@ public class Levels {
             amount *= 2;
         }
 
+        if (victim instanceof Creature) {
+            amount /= 2;
+        }
+
         if (amount == 0)
         {
             return;

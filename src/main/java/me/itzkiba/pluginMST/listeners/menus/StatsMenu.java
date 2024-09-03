@@ -86,8 +86,11 @@ public class StatsMenu implements Listener {
         meta = defense.getItemMeta();
         meta.setDisplayName(ChatColor.WHITE + "\u26E8 " + "Defense: " + ChatColor.WHITE + "+" + Stats.getEntityDefenseStat(viewer));
         lore = new ArrayList<>();
-        lore.add(ChatColor.GRAY + "Reduces damage taken from all sources.");
-        lore.add(ChatColor.GRAY + "Damage Reduction: " + ChatColor.GREEN + String.format("%.2f", DamageReduction.damageReductionFromDefense(Stats.getEntityDefenseStat(viewer))*100) + "%");
+        lore.add(ChatColor.GRAY + "Reduces damage taken from all sources by a percentage.");
+        lore.add(ChatColor.GRAY + "Damage is also reduced by " + ChatColor.GREEN + "1" + ChatColor.GRAY + " for every " + ChatColor.YELLOW + "10" + ChatColor.GRAY + " defense.");
+        lore.add("");
+        lore.add(ChatColor.GRAY + "Damage Subtraction: " + ChatColor.GREEN + String.format("%.1f", DamageReduction.damageSubtractionFromDefense(Stats.getEntityDefenseStat(viewer))) + ChatColor.GRAY);
+        lore.add(ChatColor.GRAY + "Damage Reduction: " + ChatColor.YELLOW + String.format("%.1f", DamageReduction.damageReductionFromDefense(Stats.getEntityDefenseStat(viewer)) * 100.f) + "%");
         lore.add("");
         lore.add(ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Gain boosts to defense through wearing armor.");
         lore.add("");
@@ -140,6 +143,21 @@ public class StatsMenu implements Listener {
         meta.setLore(lore);
         meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         attackspeed.setItemMeta(meta);
+
+
+
+
+        ItemStack power = new ItemStack(Material.BLAZE_POWDER, 1);
+        meta = power.getItemMeta();
+        meta.setDisplayName(ChatColor.GOLD + "\u2742 " + "Power: " + ChatColor.WHITE + "+" + Stats.getEntityPowerStat(viewer) + "%");
+        lore = new ArrayList<>();
+        lore.add(ChatColor.GRAY + "Increases damage dealt for all class types.");
+        lore.add("");
+        lore.add(ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "Gain boosts to power through equipment bonuses.");
+        lore.add("");
+        meta.setLore(lore);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        power.setItemMeta(meta);
 
 
 
@@ -247,6 +265,7 @@ public class StatsMenu implements Listener {
         inventory.setItem(10, meleeDamage);
         inventory.setItem(11, rangedDamage);
         inventory.setItem(12, magicDamage);
+        inventory.setItem(13, power);
         inventory.setItem(19, crit);
         inventory.setItem(20, attackspeed);
         inventory.setItem(21, mana);

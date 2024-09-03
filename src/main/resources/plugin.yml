@@ -3,6 +3,7 @@ version: '1.0'
 main: me.itzkiba.pluginMST.PluginMST
 api-version: '1.21'
 authors: [ ItzKiba ]
+depend: [ ProtocolLib ]
 commands:
   setitemstat:
     description: Sets the stats for your currently held item.

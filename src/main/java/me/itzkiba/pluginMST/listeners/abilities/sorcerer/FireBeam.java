@@ -29,7 +29,7 @@ public class FireBeam implements Listener {
     private long cooldown = 50;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
 
-    private long manaCost = 10;
+    private long manaCost = 25;
 
     @EventHandler
     public void Use(PlayerInteractEvent e)

@@ -21,7 +21,7 @@ public class RegenerateMana implements Listener {
 
                     if (Stats.getEntityManaStat(player) < Stats.getEntityMaxManaStat(player))
                     {
-                        double manaIncrease = (Stats.getEntityMaxManaStat(player) * 0.01) + 5;
+                        double manaIncrease = (Stats.getEntityMaxManaStat(player) * 0.01) + 1;
                         Stats.setEntityManaStat(player, Stats.getEntityManaStat(player) + manaIncrease);
                     }
 
@@ -29,6 +29,11 @@ public class RegenerateMana implements Listener {
                     {
                         Stats.setEntityManaStat(player, Stats.getEntityMaxManaStat(player));
                         return;
+                    }
+
+                    if (player.getHealth() < player.getMaxHealth()) {
+                        double regenValue = player.getMaxHealth() * 0.005;
+                        player.heal(regenValue);
                     }
 
                 }

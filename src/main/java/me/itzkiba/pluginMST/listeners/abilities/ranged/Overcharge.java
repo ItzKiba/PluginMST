@@ -107,7 +107,7 @@ public class Overcharge implements Listener {
             {
                 LivingEntity victim = (LivingEntity) rayTrace.getHitEntity();
 
-                double multiplier = (0.9 + (level * (startPosition.distance(endPosition)) * 0.001)) * (1 + (Stats.getEntityCritStat(player) / 100.0));
+                double multiplier = (1.2 + (level * (startPosition.distance(endPosition)) * 0.002)) * (1 + (Stats.getEntityCritStat(player) / 100.0));
                 double damage = (Stats.getEntityRangedDamageStat(player)) * multiplier;
 
 

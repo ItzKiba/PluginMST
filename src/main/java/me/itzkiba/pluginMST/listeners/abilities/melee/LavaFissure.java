@@ -62,8 +62,7 @@ public class LavaFissure implements Listener {
         }
 
         cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
-        Random random = new Random();
-        double multiplier = 2.2 + ((level) * 0.08);
+        double multiplier = 2.2 + ((level) * 0.1);
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(PluginMST.getPlugin(), () -> {
 
@@ -118,6 +117,7 @@ public class LavaFissure implements Listener {
                 if (numberOfEntities > 0) {
                     for (LivingEntity entity : entitiesToHit) {
                         fissureDamageEntity(entity, player, Stats.getEntityDamageStat(player) * multiplier, level);
+                        entity.addPotionEffect(hinder);
                         entity.setVelocity(new Vector(0, 0.75, 0));
                     }
                 }

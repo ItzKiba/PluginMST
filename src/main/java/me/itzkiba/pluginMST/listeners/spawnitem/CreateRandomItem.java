@@ -37,6 +37,8 @@ public class CreateRandomItem implements Listener {
 
         // Tokens are the max number of stats an item can have.
         int tokens = rarity + 1;
+        if (rarity >= 5)
+            tokens += 1;
 
         double meleeDamage = 35;
         double rangedDamage = 35;
@@ -47,6 +49,7 @@ public class CreateRandomItem implements Listener {
         double mana = 0;
         double attackspeed = 0;
         double speed = 0;
+        double power = 0;
 
         double level = (levelInput * 1.75) + 1;
         // TYPE 0 --> melee
@@ -88,7 +91,7 @@ public class CreateRandomItem implements Listener {
                 }
                 if (i >= 2)
                 {
-                    crit += level * 0.05;
+                    crit += level * 0.02;
                 }
 
                 int randomNum = random.nextInt(4);
@@ -97,7 +100,7 @@ public class CreateRandomItem implements Listener {
                         rangedDamage += level * random.nextDouble(0.2) * 0.55;
                         break;
                     case 1:
-                        crit += level * random.nextDouble(0.1) * 0.25;
+                        crit += level * random.nextDouble(0.1) * 0.03;
                         break;
                     case 2:
                         if (rarity >= 2) {
@@ -152,46 +155,49 @@ public class CreateRandomItem implements Listener {
 
             for (int i = 0; i < tokens; i++) {
                 if (i == 0) {
-                    armor += level * 0.15;
+                    armor += level * 0.16;
                     continue;
                 }
                 if (i == 2)
                 {
-                    health += level * 0.05;
+                    health += level * 0.06;
                 }
-                if (i >= 2)
-                {
+                if (i >= 2) {
                     if (armorClass == 0) {
-                        crit += level * 0.02;
+                        crit += level * 0.012;
                     }
                     if (armorClass == 1) {
-                        mana += level * 0.01;
+                        mana += level * 0.012;
                     }
                 }
 
-                int randomNum = random.nextInt(4);
+                int randomNum = random.nextInt(5);
                 switch (randomNum) {
                     case 0:
-                        armor += level * random.nextDouble(0.25) * 0.13;
+                        armor += level * random.nextDouble(0.25) * 0.15;
                         break;
                     case 1:
                         if (rarity >= 2) {
-                            health += level * random.nextDouble(0.15) * 0.13;
+                            health += level * random.nextDouble(0.15) * 0.15;
                         }
                         break;
                     case 2:
                         if (rarity >= 1) {
                             if (armorClass == 0) {
-                                crit += level * random.nextDouble(0.15) * 0.13;
+                                crit += level * random.nextDouble(0.15) * 0.09;
                             }
                             if (armorClass == 1) {
-                                mana += level * random.nextDouble(0.15) * 0.15;
+                                mana += level * random.nextDouble(0.15) * 0.09;
                             }
                         }
                         break;
                     case 3:
                         if (rarity >= 1) {
                             speed += level * random.nextDouble(0.07) * 0.15;
+                        }
+                    case 4:
+                        if (rarity >= 2) {
+                            power += level * random.nextDouble(0.07) * 0.15;
                         }
                 }
             }
@@ -204,6 +210,8 @@ public class CreateRandomItem implements Listener {
         // scuff
         double scuff = 0.35;
         double rarityBoost = (rarity * 0.30) + 1;
+        if (rarity >= 5)
+            rarityBoost += 0.15;
 
         meleeDamage *= (random.nextDouble(scuff) - (scuff / 2.0) + 1) * rarityBoost;
         rangedDamage *= (random.nextDouble(scuff) - (scuff / 2.0) + 1) * rarityBoost;
@@ -214,6 +222,7 @@ public class CreateRandomItem implements Listener {
         mana *= (random.nextDouble(scuff) - (scuff / 2.0) + 1) * rarityBoost;
         attackspeed *= (random.nextDouble(scuff) - (scuff / 2.0) + 1) * rarityBoost;
         speed *= (random.nextDouble(scuff) - (scuff / 2.0) + 1) * rarityBoost;
+        power *= (random.nextDouble(scuff) - (scuff / 2.0) + 1) * rarityBoost;
 
         meleeDamage /= 5;
         rangedDamage /= 5;
@@ -237,6 +246,7 @@ public class CreateRandomItem implements Listener {
         Stats.setBaseMaxManaStat(item, (int)mana * 5);
         Stats.setBaseAttackSpeedStat(item, (int)attackspeed * 5);
         Stats.setBaseSpeedStat(item, (int)speed * 5);
+        Stats.setBasePowerStat(item, (int)power * 5);
 
         Stats.setRarity(item, rarity);
 
@@ -248,7 +258,7 @@ public class CreateRandomItem implements Listener {
         //meta.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, new AttributeModifier(UUID.randomUUID(), "generic.armorToughness", 0, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(Stats.getArmorNamespace(), 0, AttributeModifier.Operation.ADD_NUMBER));
         meta.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(Stats.getArmorToughNamespace(), 0, AttributeModifier.Operation.ADD_NUMBER));
-        if (Stats.getRarity(item) > 2)
+        if (Stats.getRarity(item) > 1)
         {
             meta.setUnbreakable(true);
         }
@@ -280,6 +290,7 @@ public class CreateRandomItem implements Listener {
             }
             else if (level < 50)
             {
+                materialList.add(Material.GOLDEN_SWORD);
                 materialList.add(Material.IRON_SWORD);
             }
             else if (level < 75)
@@ -301,6 +312,7 @@ public class CreateRandomItem implements Listener {
             }
             else if (level < 50)
             {
+                materialList.add(Material.GOLDEN_AXE);
                 materialList.add(Material.IRON_AXE);
             }
             else if (level < 75)
@@ -319,10 +331,38 @@ public class CreateRandomItem implements Listener {
         }
         if (itemType.equals("magic"))
         {
-            materialList.add(Material.STICK);
-            if (level > 49)
-            {
+            if (level > 0) {
+                materialList.add(Material.STICK);
+                materialList.add(Material.POPPY);
+                materialList.add(Material.WHITE_TULIP);
+                materialList.add(Material.BLUE_ORCHID);
+                materialList.add(Material.ALLIUM);
+                materialList.add(Material.BONE);
+            }
+            if (level > 25) {
+                materialList.add(Material.BAMBOO);
+                materialList.add(Material.RED_TULIP);
+                materialList.add(Material.ORANGE_TULIP);
+                materialList.add(Material.PINK_TULIP);
+                materialList.add(Material.CORNFLOWER);
+                materialList.add(Material.SPRUCE_SAPLING);
+                materialList.add(Material.BIRCH_SAPLING);
+            }
+            if (level > 50) {
+                materialList.add(Material.AMETHYST_SHARD);
+                materialList.add(Material.TORCHFLOWER);
+                materialList.add(Material.WITHER_ROSE);
                 materialList.add(Material.BLAZE_ROD);
+                materialList.add(Material.RED_TULIP);
+            }
+            if (level > 75) {
+                materialList.add(Material.DEAD_BUSH);
+                materialList.add(Material.LILY_OF_THE_VALLEY);
+                materialList.add(Material.CHERRY_SAPLING);
+                materialList.add(Material.ECHO_SHARD);
+                materialList.add(Material.BREEZE_ROD);
+                materialList.add(Material.LARGE_AMETHYST_BUD);
+                materialList.add(Material.AMETHYST_CLUSTER);
             }
         }
         if (itemType.equals("armor"))
@@ -478,7 +518,7 @@ public class CreateRandomItem implements Listener {
 
     private static String getType(ItemStack item)
     {
-        String type = "armor";
+        String type = "magic";
         Material m = item.getType();
 
         switch (m)
@@ -506,9 +546,32 @@ public class CreateRandomItem implements Listener {
                 type = "bow";
                 break;
 
-            case STICK:
-            case BLAZE_ROD:
-                type = "magic";
+            case LEATHER_HELMET:
+            case LEATHER_CHESTPLATE:
+            case LEATHER_LEGGINGS:
+            case LEATHER_BOOTS:
+            case CHAINMAIL_HELMET:
+            case CHAINMAIL_CHESTPLATE:
+            case CHAINMAIL_LEGGINGS:
+            case CHAINMAIL_BOOTS:
+            case IRON_HELMET:
+            case IRON_CHESTPLATE:
+            case IRON_LEGGINGS:
+            case IRON_BOOTS:
+            case GOLDEN_HELMET:
+            case GOLDEN_CHESTPLATE:
+            case GOLDEN_LEGGINGS:
+            case GOLDEN_BOOTS:
+            case DIAMOND_HELMET:
+            case DIAMOND_CHESTPLATE:
+            case DIAMOND_LEGGINGS:
+            case DIAMOND_BOOTS:
+            case NETHERITE_HELMET:
+            case NETHERITE_CHESTPLATE:
+            case NETHERITE_LEGGINGS:
+            case NETHERITE_BOOTS:
+            case TURTLE_HELMET:
+                type = "armor";
                 break;
 
         }
@@ -577,6 +640,7 @@ public class CreateRandomItem implements Listener {
             }
             if (level >= 50) {
                 validAbilities.add(3003);
+                validAbilities.add(3005);
             }
         }
 

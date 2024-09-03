@@ -1,5 +1,12 @@
 package me.itzkiba.pluginMST;
 
+//import com.comphenix.protocol.PacketType;
+//import com.comphenix.protocol.ProtocolLibrary;
+//import com.comphenix.protocol.ProtocolManager;
+//import com.comphenix.protocol.events.ListenerPriority;
+//import com.comphenix.protocol.events.PacketAdapter;
+//import com.comphenix.protocol.events.PacketContainer;
+//import com.comphenix.protocol.events.PacketEvent;
 import me.itzkiba.pluginMST.commands.addability.AddAbilityCommand;
 import me.itzkiba.pluginMST.commands.addability.AddAbilityTabCompleter;
 import me.itzkiba.pluginMST.commands.createcustomitem.CreateCustomItemCommand;
@@ -14,6 +21,7 @@ import me.itzkiba.pluginMST.commands.showitem.ShowItemCommand;
 import me.itzkiba.pluginMST.commands.stats.StatsCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Particle;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -36,6 +44,8 @@ public final class PluginMST extends JavaPlugin {
 
     @Override
     public void onEnable() {
+//        ProtocolManager manager = ProtocolLibrary.getProtocolManager();
+//        RemoveParticle(manager);
         // Plugin startup logic
         plugin = this;
         registerListeners();
@@ -66,7 +76,6 @@ public final class PluginMST extends JavaPlugin {
         lTeam.setColor(ChatColor.GOLD);
 
         mTeam.setColor(ChatColor.DARK_RED);
-
     }
 
     @Override
@@ -138,4 +147,19 @@ public final class PluginMST extends JavaPlugin {
     public static Team getmTeam() {
         return mTeam;
     }
+
+//    public void RemoveParticle(ProtocolManager manager)
+//    {
+//        manager.addPacketListener(new PacketAdapter(this, ListenerPriority.HIGH, PacketType.Play.Server.WORLD_PARTICLES) {
+//            @Override
+//            public void onPacketSending(PacketEvent event) {
+//                PacketContainer packet = event.getPacket();
+//                if (event.getPacketType() != PacketType.Play.Server.WORLD_PARTICLES)
+//                    return;
+//
+//                if (packet.getNewParticles().read(0).getParticle() == Particle.DAMAGE_INDICATOR)
+//                    event.setCancelled(true);
+//            }
+//        });
+//    }
 }

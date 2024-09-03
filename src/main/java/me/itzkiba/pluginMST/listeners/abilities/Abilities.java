@@ -77,7 +77,7 @@ public class Abilities {
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Execution " + ChatColor.DARK_GRAY + "(Right Click)");
             desc.add(ChatColor.GRAY + "Attack your enemies with a powerful blow,");
-            desc.add(ChatColor.GRAY + "dealing " + ChatColor.RED + String.format("%.1f", (2 + (level * 0.4))) + "x " + ChatColor.GRAY + "your Crit Strength as damage.");
+            desc.add(ChatColor.GRAY + "dealing " + ChatColor.RED + String.format("%.1f", (2 + (level * 0.5))) + "x " + ChatColor.GRAY + "your Crit Strength as damage.");
             desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "7s");
         }
 
@@ -95,7 +95,7 @@ public class Abilities {
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Lava Fissure " + ChatColor.DARK_GRAY + "(Right Click)");
             desc.add(ChatColor.GRAY + "Strike your weapon into the ground, creating a");
-            desc.add(ChatColor.GRAY + "lava fissure that deals " + ChatColor.RED + (220 + (level) * 8) + "% " + ChatColor.GRAY + "of your Melee Damage");
+            desc.add(ChatColor.GRAY + "lava fissure that deals " + ChatColor.RED + (220 + (level) * 10) + "% " + ChatColor.GRAY + "of your Melee Damage");
             desc.add(ChatColor.GRAY + "and greatly hinders enemies for " + ChatColor.GREEN + String.format("%.1f", (1 + (level) * 0.1)) + ChatColor.GRAY + " seconds.");
             desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "6s");
         }
@@ -126,8 +126,8 @@ public class Abilities {
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Sculk Blast " + ChatColor.DARK_GRAY + "(Shift + Left Click)");
             desc.add(ChatColor.GRAY + "Fire three sculk arrows that explode on impact.");
-            desc.add(ChatColor.GRAY + "Each arrow deals " + ChatColor.RED + String.format("%.2f", (3 + (level * 0.1))) + "x " + ChatColor.GRAY + "of your Crit Strength as damage.");
-            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "6s");
+            desc.add(ChatColor.GRAY + "Each arrow deals " + ChatColor.RED + String.format("%.2f", (3 + (level * 0.2))) + "x " + ChatColor.GRAY + "of your Crit Strength as damage.");
+            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "7s");
         }
 
         // EVASION
@@ -153,8 +153,8 @@ public class Abilities {
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Overcharge " + ChatColor.DARK_GRAY + "(Shift + Left Click)");
             desc.add(ChatColor.GRAY + "Fire a long-range critical hitscan beam that");
-            desc.add(ChatColor.GRAY + "deals " + ChatColor.RED + "90% " + ChatColor.GRAY + "of your Ranged Damage. Damage is");
-            desc.add(ChatColor.GRAY + "increased by " + ChatColor.RED + String.format("%.1f", (0 + (level) * 0.1)) + "% " + ChatColor.GRAY + "for each block traveled.");
+            desc.add(ChatColor.GRAY + "deals " + ChatColor.RED + "120% " + ChatColor.GRAY + "of your Ranged Damage. Damage is");
+            desc.add(ChatColor.GRAY + "increased by " + ChatColor.RED + String.format("%.1f", (0 + (level) * 0.2)) + "% " + ChatColor.GRAY + "for each block traveled.");
             desc.add(ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "(Damage is boosted by Crit Strength.)");
             desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "3s");
         }
@@ -166,9 +166,10 @@ public class Abilities {
         if (id == 3000)
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Remedy " + ChatColor.DARK_GRAY + "(Right Click)");
-            desc.add(ChatColor.GRAY + "Heal yourself and nearby allies for");
-            desc.add(ChatColor.GRAY + "up to " + ChatColor.GREEN + String.format("%.2f", (5 + (level * 0.05))) + "%" + ChatColor.GRAY + " of your maximum health.");
-            desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 50");
+            desc.add(ChatColor.GRAY + "Consume all mana to heal yourself and nearby allies.");
+            desc.add(ChatColor.GRAY + "Healing is increased by " + ChatColor.RED + String.format("%.2f", (0.5 + 0.05 * level)) + ChatColor.GRAY + " health per 5 Mana consumed.");
+            desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 100% of max");
+            desc.add(ChatColor.DARK_GRAY + "(2s cooldown)");
         }
 
         // MANA BOLT
@@ -184,7 +185,7 @@ public class Abilities {
         if (id == 3002)
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Warp " + ChatColor.DARK_GRAY + "(Right Click)");
-            desc.add(ChatColor.GRAY + "Teleport forward a short distance and");
+            desc.add(ChatColor.GRAY + "Teleport " + ChatColor.GREEN + (7 + level * 0.05) + ChatColor.GRAY + " blocks forward and");
             desc.add(ChatColor.GRAY + "deal " + ChatColor.RED + (50 + (level * 3)) + "%" + ChatColor.GRAY + " of your Mana as damage to");
             desc.add(ChatColor.GRAY + "nearby enemies upon landing.");
             desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 40");
@@ -206,7 +207,16 @@ public class Abilities {
             desc.add(ChatColor.GRAY + "Cast a short-range ray of flames,");
             desc.add(ChatColor.GRAY + "dealing " + ChatColor.RED + (125 + (level)) + "%" + ChatColor.GRAY + " of your Magic Damage and");
             desc.add(ChatColor.GRAY + "lighting enemies on fire for " + ChatColor.GREEN + String.format("%.1f", (1 + (level) * 0.1)) + ChatColor.GRAY + " seconds.");
-            desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 35");
+            desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 25");
+        }
+
+        // HYPER BOLT
+        if (id == 3005)
+        {
+            desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Hyper Bolt " + ChatColor.DARK_GRAY + "(Right Click)");
+            desc.add(ChatColor.GRAY + "Fire two exploding mana bolts,");
+            desc.add(ChatColor.GRAY + "dealing " + ChatColor.RED + (80 + (level * 2)) + "%" + ChatColor.GRAY + " of your Magic Damage each.");
+            desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 40");
         }
 
         return desc;

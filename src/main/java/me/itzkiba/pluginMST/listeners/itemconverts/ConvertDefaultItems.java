@@ -193,15 +193,6 @@ public class ConvertDefaultItems implements Listener
             );
         }
 
-        if (Stats.getPowerStat(item) != 0)
-        {
-            lore.add(
-                    ChatColor.GOLD + "\u2742 " + ChatColor.GRAY + "Power: " +
-                            ChatColor.GOLD + (Stats.getPowerStat(item) > 0 ? "+" : "") +
-                            Stats.getPowerStat(item) + "%"
-            );
-        }
-
         if (Stats.getHealthStat(item) != 0)
         {
             lore.add(
@@ -217,6 +208,15 @@ public class ConvertDefaultItems implements Listener
                     ChatColor.WHITE + "\u26E8 " + ChatColor.GRAY + "Defense: " +
                             ChatColor.WHITE + (Stats.getDefenseStat(item) > 0 ? "+" : "") +
                             Stats.getDefenseStat(item)
+            );
+        }
+
+        if (Stats.getPowerStat(item) != 0)
+        {
+            lore.add(
+                    ChatColor.GOLD + "\u2742 " + ChatColor.GRAY + "Power: " +
+                            ChatColor.GOLD + (Stats.getPowerStat(item) > 0 ? "+" : "") +
+                            Stats.getPowerStat(item) + "%"
             );
         }
 

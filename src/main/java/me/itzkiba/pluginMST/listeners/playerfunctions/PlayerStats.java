@@ -47,7 +47,7 @@ public class PlayerStats implements Listener {
         }, 5);
     }
 
-    private void setStats(LivingEntity player)
+    public static void setStats(LivingEntity player)
     {
 
         // WHEN ADDING STATS, REMEMBER TO:
@@ -84,7 +84,7 @@ public class PlayerStats implements Listener {
         {
             itemCrit += 50;
 
-            // set attack speed to a high number so theres no attack cooldown
+            // set attack speed to a high number so there's no attack cooldown
             Player p = (Player) player;
         }
         for (ItemStack i : player.getEquipment().getArmorContents())
@@ -141,6 +141,7 @@ public class PlayerStats implements Listener {
         Stats.setEntityMaxManaStat(player, (int)itemMaxMana);
         Stats.setEntityAttackSpeedStat(player, Math.min((int)itemAttackSpeed, 100));
         Stats.setEntitySpeedStat(player, (int)itemSpeed);
+        Stats.setEntityPowerStat(player, (int)itemPower);
 
         if (player instanceof Player &&
         !HeavyGuard.getHeavyGuardState((Player)player))

@@ -1098,7 +1098,7 @@ public class Stats {
 
     public static double getLevelMultiplier(int level)
     {
-        return (Math.pow(1.05, level-1) * 0.9) + 0.1;
+        return (Math.pow(1.032, level-1) * 0.9) + 0.1;
     }
 
 

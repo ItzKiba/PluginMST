@@ -32,7 +32,7 @@ import java.util.UUID;
 
 public class SculkBlast implements Listener {
 
-    private long cooldown = 6000;
+    private long cooldown = 7000;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
     private final float arrowBloom = 10F;
 
@@ -76,7 +76,7 @@ public class SculkBlast implements Listener {
 
         cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
         Random random = new Random();
-        double multiplier = 3 + ((level) * 0.1);
+        double multiplier = 3 + ((level) * 0.2);
         double damageOriginal = (int)(Stats.getEntityCritStat(player));
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(PluginMST.getPlugin(), () -> {

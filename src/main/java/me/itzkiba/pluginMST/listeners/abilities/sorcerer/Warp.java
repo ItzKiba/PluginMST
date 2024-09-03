@@ -76,7 +76,7 @@ public class Warp implements Listener {
 
         Random random = new Random();
         double multiplier = (0.50 + (level * 0.03));
-        double maxDistance = 8;
+        double maxDistance = 7 + level * 0.05;
         Vector facing = player.getEyeLocation().getDirection().multiply(0.75).setY(0.25);
 
         Location origLocation = player.getLocation().add(0, 1, 0);
@@ -84,7 +84,7 @@ public class Warp implements Listener {
 
         player.getWorld().playSound(origLocation, Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 0.7F, 1F + random.nextFloat(0.3F));
 
-        for (double i = maxDistance; i > 0; i -= 0.25)
+        for (double i = maxDistance; i > 0; i -= 0.1)
         {
             RayTraceResult teleportRayTrace = player.getWorld().rayTraceBlocks(player.getEyeLocation(), player.getEyeLocation().getDirection(), i, FluidCollisionMode.NEVER, true);
             if (teleportRayTrace == null)
@@ -98,6 +98,8 @@ public class Warp implements Listener {
                 break;
             }
         }
+
+        player.getWorld().playSound(origLocation, Sound.BLOCK_RESPAWN_ANCHOR_CHARGE, 0.7F, 1F + random.nextFloat(0.3F));
 
         Location particleLocation = tpLocation;
 

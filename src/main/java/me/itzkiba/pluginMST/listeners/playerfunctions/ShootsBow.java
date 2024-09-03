@@ -23,8 +23,7 @@ public class ShootsBow implements Listener {
         Stats.setEntityRangedDamageStat(arrow, (int)(Stats.getEntityRangedDamageStat(e.getEntity()) * power));
 
         if (e.getEntity() instanceof Player) {
-            Stats.setEntityCritStat(arrow, Stats.getEntityCritStat(e.getEntity()));
-
+            Stats.setEntityCritStat(arrow, Stats.getEntityCritStat(e.getEntity()) / 2);
         }
     }
 }

@@ -32,6 +32,7 @@ public class AddAbilityTabCompleter implements TabCompleter {
             a.add("inferno");
             a.add("overcharge");
             a.add("lavafissure");
+            a.add("hyperbolt");
             return a;
         }
 

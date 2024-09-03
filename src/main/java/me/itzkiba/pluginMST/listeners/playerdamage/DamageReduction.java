@@ -19,14 +19,21 @@ public class DamageReduction implements Listener {
         }
 
         LivingEntity v = (LivingEntity) e.getEntity();
-        e.setDamage(e.getDamage() * (1 - damageReductionFromDefense(Stats.getEntityDefenseStat(v))));
+        int defense = Stats.getEntityDefenseStat(v);
+        e.setDamage(
+                Math.max((e.getDamage() - damageSubtractionFromDefense(defense) / 5.0) * (1 - damageReductionFromDefense(defense)), 1)
+        );
 
     }
 
     // DAMAGE REDUCTION FORMULA
     public static double damageReductionFromDefense(int defense)
     {
-        return (defense) / (defense + 100.0);
+        return defense / (defense + 400.0);
+    }
+
+    public static double damageSubtractionFromDefense(int defense) {
+        return defense / 10.0;
     }
 
 }

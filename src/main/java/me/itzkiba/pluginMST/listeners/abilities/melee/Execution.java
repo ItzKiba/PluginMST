@@ -61,7 +61,7 @@ public class Execution implements Listener {
 
         cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
         Random random = new Random();
-        double multiplier = 2 + ((level) * 0.4);
+        double multiplier = 2 + ((level) * 0.5);
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(PluginMST.getPlugin(), () -> {
 

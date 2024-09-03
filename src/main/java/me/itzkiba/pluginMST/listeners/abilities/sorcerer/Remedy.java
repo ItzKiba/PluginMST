@@ -26,10 +26,8 @@ import java.util.UUID;
 
 public class Remedy implements Listener {
 
-    private long cooldown = 150;
+    private long cooldown = 2000;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
-
-    private long manaCost = 50;
 
     @EventHandler
     public void Use(PlayerInteractEvent e)
@@ -66,15 +64,11 @@ public class Remedy implements Listener {
 
         cooldownMap.put(player.getUniqueId(), System.currentTimeMillis());
 
-        if (Stats.getEntityManaStat(player) < manaCost)
-        {
-            return;
-        }
-        Stats.setEntityManaStat(player, Stats.getEntityManaStat(player) - manaCost);
+        double healAmount = (Stats.getEntityManaStat(player) / 5) * (0.5 + 0.05 * level);
+
+        Stats.setEntityManaStat(player, 0);
 
         Random random = new Random();
-        double multiplier = (0.05 + (level * 0.0005));
-        double healMax = player.getMaxHealth() * multiplier;
 
         Location origLocation = player.getLocation().add(0, 0.1, 0);
         PotionEffect regen = new PotionEffect(PotionEffectType.REGENERATION,  20, 0, false, true, true);
@@ -90,9 +84,7 @@ public class Remedy implements Listener {
                     Collection<Player> nearbyPlayers = player.getLocation().getNearbyPlayers(8);
                     for (Player p : nearbyPlayers)
                     {
-                        double healAmount = Math.min(healMax, p.getMaxHealth() - p.getHealth());
-
-                        p.setHealth(p.getHealth() + healAmount);
+                        p.heal(healAmount / 5.0);
                         p.addPotionEffect(regen);
                         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_VILLAGER_CONVERTED, 0.8F, 1F + random.nextFloat(0.3F));
                     }

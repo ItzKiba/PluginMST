@@ -48,7 +48,13 @@ public class TrackXP implements Listener {
 
             Random random = new Random();
 
-            if (random.nextInt(101) < 20)
+            int bound = 20;
+            if (e.getEntity().getWorld().getEnvironment() == World.Environment.NETHER)
+                bound += 10;
+            if (e.getEntity().getWorld().getEnvironment() == World.Environment.THE_END)
+                bound += 10;
+
+            if (random.nextInt(101) < bound)
             {
                 spawnItemFromEntityDeath(e.getEntity(), player);
             }
@@ -96,9 +102,9 @@ public class TrackXP implements Listener {
         }
 
         // HARD CAP ON RARITY BASED ON LEVEL
-        if (rarity > 2 && level <= 20)
+        if (rarity > 3 && level <= 30)
         {
-            rarity = 2;
+            rarity = 3;
         }
 
         if (level > 30 && rarity < 1)
@@ -106,12 +112,12 @@ public class TrackXP implements Listener {
             rarity = 1;
         }
 
-        if (level > 50 && rarity < 2)
+        if (level > 60 && rarity < 2)
         {
             rarity = 2;
         }
 
-        if (level > 70 && rarity < 3)
+        if (level > 100 && rarity < 3)
         {
             rarity = 3;
         }
@@ -235,7 +241,7 @@ public class TrackXP implements Listener {
                 rarityColor = NamedTextColor.GOLD;
                 break;
             case 5:
-                rarityColor = NamedTextColor.AQUA;
+                rarityColor = NamedTextColor.DARK_RED;
                 break;
         }
 

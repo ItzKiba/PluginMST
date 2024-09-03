@@ -28,7 +28,7 @@ public class ItemUtility {
                 damage = 35;
                 break;
             case DIAMOND_SWORD:
-                damage = 50;
+                damage = 100;
                 rarity = 1;
                 break;
             case WOODEN_PICKAXE:
@@ -76,29 +76,29 @@ public class ItemUtility {
                 damage = 17;
                 break;
             case IRON_SWORD:
-                damage = 30;
+                damage = 50;
                 break;
             case NETHERITE_PICKAXE:
                 damage = 30;
                 rarity = 1;
                 break;
             case IRON_SHOVEL:
-                damage = 22;
+                damage = 20;
                 break;
             case DIAMOND_SHOVEL:
-                damage = 27;
+                damage = 25;
                 rarity = 1;
                 break;
             case NETHERITE_SWORD:
-                damage = 70;
-                rarity = 1;
+                damage = 200;
+                rarity = 2;
                 break;
             case NETHERITE_AXE:
                 damage = 80;
                 rarity = 1;
                 break;
             case NETHERITE_SHOVEL:
-                damage = 32;
+                damage = 30;
                 rarity = 1;
                 break;
             case BOW:
@@ -107,6 +107,9 @@ public class ItemUtility {
             case CROSSBOW:
                 ranged_damage = 40;
                 break;
+            case MACE:
+                damage = 400;
+                rarity = 3;
         }
 
         // DEFENSE

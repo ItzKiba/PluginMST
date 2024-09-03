@@ -98,6 +98,9 @@ public class AddAbilityCommand implements CommandExecutor {
             case "inferno":
                 Abilities.setItemAbilityID(item, 3004);
                 break;
+            case "hyperbolt":
+                Abilities.setItemAbilityID(item, 3005);
+                break;
 
             default:
                 invalid = true;
