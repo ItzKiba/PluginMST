@@ -119,7 +119,7 @@ public class PlayerStats implements Listener {
             if (Classes.getPlayerClass((Player) player) == 3)
             {
                 itemMaxMana += 100;
-                mageMultiplier = 1 + ((Stats.getEntityMaxManaStat((Player) player) / 5F) * 0.01);
+                mageMultiplier = Math.max(1 + ((Stats.getEntityMaxManaStat((Player) player) / 5F) * 0.01), 1);
             }
         }
 

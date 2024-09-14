@@ -52,7 +52,7 @@ public class PlayerHealthBars implements Listener
                         }
                         else
                             text = Component.text(
-                                    color + "   \u2764 " + currentHP + " / " + maxHP + "                      " + ChatColor.WHITE + "\u26E8 " + currentDefense + "    "
+                                    color + "   \u2764 " + currentHP + " | " + maxHP + "                      " + ChatColor.WHITE + "\u26E8 " + currentDefense + "    "
                             );
 
 

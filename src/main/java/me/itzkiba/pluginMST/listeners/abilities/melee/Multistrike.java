@@ -20,7 +20,7 @@ import java.util.*;
 
 public class Multistrike implements Listener {
 
-    private long cooldown = 5000;
+    private long cooldown = 4000;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
 
     @EventHandler

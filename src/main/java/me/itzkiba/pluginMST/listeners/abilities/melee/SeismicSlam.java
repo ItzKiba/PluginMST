@@ -29,7 +29,7 @@ public class SeismicSlam implements Listener {
 
     static NamespacedKey IS_LEAPING = new NamespacedKey(PluginMST.getPlugin(), "isLeaping");
 
-    private long cooldown = 5000;
+    private long cooldown = 4000;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
 
     @EventHandler
@@ -84,7 +84,7 @@ public class SeismicSlam implements Listener {
                 if (i == 0)
                 {
                     setLeapingState(player, true);
-                    double ls = 2;
+                    double ls = 2.5;
                     player.setVelocity(player.getEyeLocation().getDirection().multiply(ls).multiply(new Vector(1, 0.15, 1)).add(new Vector(0, 0.8, 0)));
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ENDER_DRAGON_FLAP, 1F, 0.6F + random.nextFloat(0.4F));
                 }
@@ -114,7 +114,7 @@ public class SeismicSlam implements Listener {
                     player.getWorld().spawnParticle(Particle.CAMPFIRE_COSY_SMOKE, player.getLocation(), 20, 1, 0, 1, 0.1);
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 0.7F, 0.5F + random.nextFloat(0.1F));
                     ParticleRay.createCircle(player.getLocation(), 5, 50, Particle.LARGE_SMOKE);
-                    player.setVelocity(new Vector(0, 1, 0).multiply(0.4));
+                    player.setVelocity(new Vector(player.getVelocity().getX(), 0.4, player.getVelocity().getZ()));
                     setLeapingState(player, false);
                     this.cancel();
                 }

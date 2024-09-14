@@ -23,7 +23,7 @@ import java.util.UUID;
 
 public class Execution implements Listener {
 
-    private long cooldown = 7000;
+    private long cooldown = 6000;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
 
     @EventHandler

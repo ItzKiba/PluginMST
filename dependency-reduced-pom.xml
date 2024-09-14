@@ -35,6 +35,22 @@
         </executions>
         <configuration>
           <outputDirectory>F:\Minecraft\Servers\MST Test Server\plugins</outputDirectory>
+          <filters>
+            <filter>
+              <artifact>*.*</artifact>
+              <excludes>
+                <exclude>module-info.class</exclude>
+                <exclude>META-INF/MANIFEST.MF</exclude>
+              </excludes>
+            </filter>
+          </filters>
+          <transformers>
+            <transformer>
+              <manifestEntries>
+                <Main-Class>me.itzkiba.pluginMST</Main-Class>
+              </manifestEntries>
+            </transformer>
+          </transformers>
         </configuration>
       </plugin>
     </plugins>
@@ -43,6 +59,10 @@
     <repository>
       <id>papermc-repo</id>
       <url>https://repo.papermc.io/repository/maven-public/</url>
+    </repository>
+    <repository>
+      <id>dmulloy2-repo</id>
+      <url>https://repo.dmulloy2.net/repository/public/</url>
     </repository>
   </repositories>
   <dependencies>

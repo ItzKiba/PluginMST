@@ -59,7 +59,7 @@ public class Abilities {
             desc.add(ChatColor.GRAY + "Unleash a flurry of melee strikes. Each strike");
             desc.add(ChatColor.GRAY + "deals " + ChatColor.RED + (20 + (level) * 1) + "% " + ChatColor.GRAY + "of your Melee Damage.");
             desc.add(ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "(Hold Sneak to cancel the small forward boost)");
-            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "5s");
+            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "4s");
         }
 
         // HEAVY GUARD
@@ -78,7 +78,7 @@ public class Abilities {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Execution " + ChatColor.DARK_GRAY + "(Right Click)");
             desc.add(ChatColor.GRAY + "Attack your enemies with a powerful blow,");
             desc.add(ChatColor.GRAY + "dealing " + ChatColor.RED + String.format("%.1f", (2 + (level * 0.5))) + "x " + ChatColor.GRAY + "your Crit Strength as damage.");
-            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "7s");
+            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "6s");
         }
 
         // SEISMIC SLAM
@@ -87,7 +87,7 @@ public class Abilities {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Seismic Slam " + ChatColor.DARK_GRAY + "(Right Click)");
             desc.add(ChatColor.GRAY + "Leap into the air and slam down,");
             desc.add(ChatColor.GRAY + "dealing " + ChatColor.RED + (150 + (level) * 5) + "% " + ChatColor.GRAY + "of your Melee Damage.");
-            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "5s");
+            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "4s");
         }
 
         // FISSURE
@@ -97,7 +97,7 @@ public class Abilities {
             desc.add(ChatColor.GRAY + "Strike your weapon into the ground, creating a");
             desc.add(ChatColor.GRAY + "lava fissure that deals " + ChatColor.RED + (220 + (level) * 10) + "% " + ChatColor.GRAY + "of your Melee Damage");
             desc.add(ChatColor.GRAY + "and greatly hinders enemies for " + ChatColor.GREEN + String.format("%.1f", (1 + (level) * 0.1)) + ChatColor.GRAY + " seconds.");
-            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "6s");
+            desc.add(ChatColor.DARK_GRAY + "Cooldown: " + ChatColor.GREEN + "5s");
         }
 
 
@@ -185,7 +185,7 @@ public class Abilities {
         if (id == 3002)
         {
             desc.add(ChatColor.YELLOW + "\u272A " + ChatColor.GOLD + "Warp " + ChatColor.DARK_GRAY + "(Right Click)");
-            desc.add(ChatColor.GRAY + "Teleport " + ChatColor.GREEN + (7 + level * 0.05) + ChatColor.GRAY + " blocks forward and");
+            desc.add(ChatColor.GRAY + "Teleport " + ChatColor.GREEN + String.format("%.2f", (7 + level * 0.05)) + ChatColor.GRAY + " blocks forward and");
             desc.add(ChatColor.GRAY + "deal " + ChatColor.RED + (50 + (level * 3)) + "%" + ChatColor.GRAY + " of your Mana as damage to");
             desc.add(ChatColor.GRAY + "nearby enemies upon landing.");
             desc.add(ChatColor.DARK_GRAY + "Mana Cost: " + ChatColor.DARK_AQUA + "\u2735 40");

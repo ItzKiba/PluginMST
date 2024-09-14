@@ -25,7 +25,7 @@ import java.util.*;
 
 public class LavaFissure implements Listener {
 
-    private long cooldown = 6000;
+    private long cooldown = 5000;
     private HashMap<UUID, Long> cooldownMap = new HashMap<>();
 
     @EventHandler

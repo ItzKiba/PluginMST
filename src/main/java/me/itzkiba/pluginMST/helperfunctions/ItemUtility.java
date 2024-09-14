@@ -25,7 +25,7 @@ public class ItemUtility {
                 break;
             case WOODEN_AXE:
             case GOLDEN_AXE:
-                damage = 35;
+                damage = 30;
                 break;
             case DIAMOND_SWORD:
                 damage = 100;
@@ -48,10 +48,10 @@ public class ItemUtility {
             case DIAMOND_HOE:
             case NETHERITE_HOE:
                 damage = 5;
-                rarity = 1;
+                rarity = 2;
                 break;
             case STONE_SWORD:
-                damage = 25;
+                damage = 30;
                 break;
             case DIAMOND_PICKAXE:
                 damage = 25;
@@ -62,12 +62,12 @@ public class ItemUtility {
                 damage = 45;
                 break;
             case DIAMOND_AXE:
-                damage = 55;
+                damage = 75;
                 rarity = 1;
                 break;
             case TRIDENT:
-                damage = 45;
-                rarity = 1;
+                damage = 100;
+                rarity = 2;
                 break;
             case STONE_PICKAXE:
                 damage = 15;
@@ -80,7 +80,7 @@ public class ItemUtility {
                 break;
             case NETHERITE_PICKAXE:
                 damage = 30;
-                rarity = 1;
+                rarity = 2;
                 break;
             case IRON_SHOVEL:
                 damage = 20;
@@ -94,18 +94,18 @@ public class ItemUtility {
                 rarity = 2;
                 break;
             case NETHERITE_AXE:
-                damage = 80;
-                rarity = 1;
+                damage = 200;
+                rarity = 2;
                 break;
             case NETHERITE_SHOVEL:
                 damage = 30;
-                rarity = 1;
+                rarity = 2;
                 break;
             case BOW:
-                ranged_damage = 30;
+                ranged_damage = 40;
                 break;
             case CROSSBOW:
-                ranged_damage = 40;
+                ranged_damage = 60;
                 break;
             case MACE:
                 damage = 400;
@@ -126,75 +126,75 @@ public class ItemUtility {
                 defense = 10;
                 break;
             case GOLDEN_HELMET:
-                defense = 10;
-                break;
-            case GOLDEN_CHESTPLATE:
-                defense = 25;
-                break;
-            case GOLDEN_LEGGINGS:
-                defense = 15;
-                break;
-            case GOLDEN_BOOTS:
-                defense = 5;
-                break;
-            case CHAINMAIL_HELMET:
-                defense = 5;
-                break;
-            case CHAINMAIL_CHESTPLATE:
-                defense = 25;
-                break;
-            case CHAINMAIL_LEGGINGS:
                 defense = 20;
                 break;
-            case CHAINMAIL_BOOTS:
-                defense = 5;
+            case GOLDEN_CHESTPLATE:
+                defense = 40;
                 break;
-            case IRON_HELMET:
-                defense = 15;
-                break;
-            case IRON_CHESTPLATE:
-                defense = 35;
-                break;
-            case IRON_LEGGINGS:
+            case GOLDEN_LEGGINGS:
                 defense = 30;
                 break;
-            case IRON_BOOTS:
+            case GOLDEN_BOOTS:
                 defense = 15;
                 break;
+            case CHAINMAIL_HELMET:
+                defense = 20;
+                break;
+            case CHAINMAIL_CHESTPLATE:
+                defense = 35;
+                break;
+            case CHAINMAIL_LEGGINGS:
+                defense = 30;
+                break;
+            case CHAINMAIL_BOOTS:
+                defense = 15;
+                break;
+            case IRON_HELMET:
+                defense = 40;
+                break;
+            case IRON_CHESTPLATE:
+                defense = 60;
+                break;
+            case IRON_LEGGINGS:
+                defense = 50;
+                break;
+            case IRON_BOOTS:
+                defense = 30;
+                break;
             case DIAMOND_HELMET:
-                defense = 25;
+                defense = 75;
                 rarity = 1;
                 break;
             case DIAMOND_CHESTPLATE:
-                defense = 50;
+                defense = 100;
                 rarity = 1;
                 break;
             case DIAMOND_LEGGINGS:
-                defense = 40;
+                defense = 90;
                 rarity = 1;
                 break;
             case DIAMOND_BOOTS:
-                defense = 25;
+                defense = 50;
                 rarity = 1;
                 break;
             case NETHERITE_HELMET:
-                defense = 40;
-                rarity = 1;
+                defense = 150;
+                rarity = 2;
                 break;
             case NETHERITE_CHESTPLATE:
-                defense = 70;
-                rarity = 1;
+                defense = 200;
+                rarity = 2;
                 break;
             case NETHERITE_LEGGINGS:
-                defense = 55;
-                rarity = 1;
+                defense = 180;
+                rarity = 2;
                 break;
             case NETHERITE_BOOTS:
-                defense = 35;
-                rarity = 1;
+                defense = 100;
+                rarity = 2;
                 break;
             case TURTLE_HELMET:
-                defense = 10;
+                defense = 50;
                 rarity = 1;
                 break;
         }

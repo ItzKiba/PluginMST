@@ -7,6 +7,7 @@ import me.itzkiba.pluginMST.listeners.persistentdatakeys.Classes;
 import me.itzkiba.pluginMST.listeners.persistentdatakeys.Levels;
 import me.itzkiba.pluginMST.listeners.persistentdatakeys.Stats;
 import org.bukkit.*;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.LivingEntity;
@@ -14,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -98,7 +100,7 @@ public class AttackCooldown implements Listener {
             {
                 WarriorBonus.setPlayerStacks(p, WarriorBonus.getPlayerStacks(p) + 1);
                 int currentStacks = WarriorBonus.getPlayerStacks(p);
-                damageBonus += 0.01 * currentStacks;
+                damageBonus += 0.02 * currentStacks;
 
                 // debug
                 //p.sendMessage(ChatColor.LIGHT_PURPLE + "" + currentStacks);
@@ -111,6 +113,22 @@ public class AttackCooldown implements Listener {
                     }
                 }, 80);
 
+            }
+
+            // Mace
+            if (e.getDamager() instanceof Player) {
+                Player player = (Player)e.getDamager();
+                ItemStack item = player.getInventory().getItemInMainHand();
+                if (item.getType() == Material.MACE) {
+                    double velocity = player.getVelocity().getY() * -1;
+                    int breachLvl = item.getEnchantmentLevel(Enchantment.BREACH);
+                    int densityLvl = item.getEnchantmentLevel(Enchantment.DENSITY);
+                    if (velocity > 0.7) {
+                        damageBonus *= (velocity * 1.5);
+                        damageBonus *= 1 + breachLvl * 0.1;
+                        damageBonus *= 1 + densityLvl * 0.1;
+                    }
+                }
             }
 
             e.setDamage(damage * damageBonus);
